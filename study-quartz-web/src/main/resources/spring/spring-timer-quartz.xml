@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:task="http://www.springframework.org/schema/task"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 		
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd 
+	    http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task.xsd"
+	default-lazy-init="true">
+
+
+
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="true" autowire="no">
+		<!--quartz的基本配置-->
+    	<property name="configLocation" value="classpath:quartz.properties" />
+    	<!--数据源-->
+    	<property name="dataSource" ref="dataSource" />
+    	<!--QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动-->
+        <property name="startupDelay" value="3" />
+    	<!--QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了-->
+    	<property name="overwriteExistingJobs" value="true" />
+    	<!--是否自动启动-->
+		<property name="autoStartup" value="true" />
+		<property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
+    </bean>
+
+	<bean id="quartzManager" class="com.wez.quartz.manage.QuartzManager" lazy-init="false">
+		<property name="scheduler" ref="schedulerFactory" />
+	</bean>
+	
+</beans>
