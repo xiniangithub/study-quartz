@@ -18,7 +18,7 @@
         <hibernate.version>5.2.9.Final</hibernate.version>
         <druid.version>1.1.10</druid.version>
         <oracle.driver.version>10.2.0.1</oracle.driver.version>
-        <fastjson.version>1.2.7</fastjson.version>
+        <fastjson.version>1.2.25</fastjson.version>
         <uuid.version>3.1.5</uuid.version>
     </properties>
 
