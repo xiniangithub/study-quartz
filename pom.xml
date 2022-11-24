@@ -15,7 +15,7 @@
 
     <properties>
         <spring.version>5.0.4.RELEASE</spring.version>
-        <hibernate.version>5.2.9.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
         <druid.version>1.1.10</druid.version>
         <oracle.driver.version>10.2.0.1</oracle.driver.version>
         <fastjson.version>1.2.7</fastjson.version>
